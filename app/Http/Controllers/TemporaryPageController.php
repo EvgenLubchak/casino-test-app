@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateLinkRequest;
 use App\Http\Services\LinkService;
 use Illuminate\Http\Request;
+use App\Http\Requests\DeactivateRequest;
 
 class TemporaryPageController extends Controller
 {
@@ -51,7 +52,7 @@ class TemporaryPageController extends Controller
      * @param Request $request The HTTP request containing the deactivation token.
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function deactivate(Request $request)
+    public function deactivate(DeactivateRequest $request)
     {
         $success = $this->linkService->deactivateLink($request->get('token'));
 

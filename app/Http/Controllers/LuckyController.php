@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\LuckyService;
-use Illuminate\Http\Request;
+use App\Http\Requests\PlayRequest;
+use App\Http\Requests\HistoryRequest;
 
 class LuckyController extends Controller
 {
@@ -20,10 +21,10 @@ class LuckyController extends Controller
      * This method attempts to play a game using the provided request data, checks if the player has won,
      * and redirects back with the appropriate result message (win, lose, or error).
      *
-     * @param Request $request The HTTP request containing necessary input.
+     * @param PlayRequest $request The HTTP request containing necessary input.
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function play(Request $request)
+    public function play(PlayRequest $request)
     {
         try {
             $result = $this->luckyService->play($request->get('link_id'));
@@ -42,10 +43,10 @@ class LuckyController extends Controller
     /**
      * Handles the retrieval of the last history records based on the provided request.
      *
-     * @param Request $request The HTTP request containing the necessary parameters.
+     * @param HistoryRequest $request The HTTP request containing the necessary parameters.
      * @return \Illuminate\Http\JsonResponse A JSON response containing the results.
      */
-    public function lastHistory(Request $request)
+    public function lastHistory(HistoryRequest $request)
     {
         $results = $this->luckyService->getLastResults($request->get('link_id'));
         return response()->json($results);
