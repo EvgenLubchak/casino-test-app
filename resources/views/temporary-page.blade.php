@@ -99,13 +99,13 @@
 
         @if(session('winResult'))
             <div class="bg-green-100 border border-green-300 text-green-800 font-medium rounded-lg p-4 mt-4">
-                {{ session('winResult') }}
+                {{ session('winResult')['message'] }}
             </div>
         @endif
         <!-- Error Message -->
         @if(session('loseResult'))
             <div class="bg-red-100 border border-red-300 text-red-800 font-medium rounded-lg p-4 mt-4">
-                {{ session('loseResult') }}
+                {{ session('loseResult')['message'] }}
             </div>
         @endif
         @if(session('linkNotActive'))

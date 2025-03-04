@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\loseResultResource;
+use App\Http\Resources\WinResultResource;
 use App\Http\Services\LuckyService;
 use App\Http\Requests\PlayRequest;
 use App\Http\Requests\HistoryRequest;
@@ -31,10 +33,14 @@ class LuckyController extends Controller
             if ($result['isWin']) {
                 return redirect()->back()->with(
                     'winResult',
-                    "You win! Number: {$result['number']}. You got {$result['prize']} $."
+                    (new WinResultResource($result))->resolve()
                 );
+
             }
-            return redirect()->back()->with('loseResult', "You lose!");
+            return redirect()->back()->with(
+                'loseResult',
+                (new loseResultResource($result))->resolve()
+            );
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Something went wrong. Please try again.');
         }
