@@ -108,6 +108,11 @@
                 {{ session('loseResult') }}
             </div>
         @endif
+        @if(session('linkNotActive'))
+            <div class="bg-red-100 border border-red-300 text-red-800 font-medium rounded-lg p-4 mt-4">
+                Link Not Active. Please generate a new link.
+            </div>
+        @endif
 
     </section>
 

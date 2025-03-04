@@ -24,7 +24,7 @@ class CheckActiveLink
         $token = $request->get('token');
         $temporaryLink = $this->linkService->getLink($token);
         if (!$temporaryLink || !$temporaryLink->active) {
-            return response()->json(['message' => 'link not active.'], 403);
+            return redirect()->back()->with('linkNotActive', true);
         }
         return $next($request);
     }
