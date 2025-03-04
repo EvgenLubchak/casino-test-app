@@ -12,6 +12,7 @@ A Laravel-based application for managing temporary links and providing a "feelin
 
 - **Framework:** Laravel v12.0.1
 - **Database:** MySQL
+- **Cache:** Redis
 - **Frontend:** Tailwind CSS
 
 ### Key Dependencies
